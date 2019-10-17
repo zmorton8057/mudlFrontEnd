@@ -24,7 +24,8 @@ class HomeScreen extends Component {
       moods: [],
       zac: 'zac',
       level: 'primary_emotion',
-      primary: ''
+      primary: null,
+      secondary:null
     }
   }
   updateMoods(primary_emotion, secondary_emotion) {
@@ -46,6 +47,7 @@ class HomeScreen extends Component {
   handlePress(e, primary_emotion, secondary_emotion) {
     if (primary_emotion && secondary_emotion) {
       this.updateMoods(primary_emotion, secondary_emotion)
+      this.setState({ secondary:secondary_emotion })
     } else if (primary_emotion) {
       this.updateMoods(primary_emotion)
       this.setState({ primary: primary_emotion })
@@ -53,12 +55,13 @@ class HomeScreen extends Component {
   }
   resetAll(){
     this.updateMoods(null,null);
+    this.setState({primary:null,secondary:null})
   }
 
   render() {
-
     return (<View>
       <HeaderHome></HeaderHome>
+      <Text>Your last chosen emotion: {(this.state.primary||"")+"-> "+(this.state.secondary||"")}</Text>
       {
 
         this.state.moods.map((item, index) => {

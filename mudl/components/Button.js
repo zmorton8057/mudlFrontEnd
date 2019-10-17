@@ -10,7 +10,7 @@ const FeelingButton = props => {
             <TouchableHighlight
                 style={styles.button}
                 onPress={props.onPress}>
-                <Text className={props.class} style={styles.text}>{props.emotion}</Text>
+                <Text style={styles.text}>{props.emotion}</Text>
             </TouchableHighlight>
         </View>
 

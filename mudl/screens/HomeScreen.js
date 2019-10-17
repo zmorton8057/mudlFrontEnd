@@ -50,8 +50,9 @@ class HomeScreen extends Component {
       this.updateMoods(primary_emotion)
       this.setState({ primary: primary_emotion })
     }
-
-
+  }
+  resetAll(){
+    this.updateMoods(null,null);
   }
 
   render() {
@@ -73,6 +74,7 @@ class HomeScreen extends Component {
           return button
         })
       }
+      <FeelingButton onPress={(e)=>this.resetAll(e)} emotion={'reset'}></FeelingButton>
     </View>
     )
   }

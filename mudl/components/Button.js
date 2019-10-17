@@ -20,7 +20,7 @@ const FeelingButton = props => {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: '#1ebbd7',
-        padding: 25,
+        padding: 10,
         borderRadius: 10,
         margin: 10,
         width: 300

@@ -49,8 +49,7 @@ class HomeScreen extends Component {
   // this componentDidMount initializes the first page by running the updateMoods() function with no parameters to get the default
   // first 6 primary emotions
   componentDidMount() {
-    this.resetAll();
-    this.updateMoods()
+    this.setState({moods:['happy','angry','disgusted','sad','surprised','fearful']})
   }
   // this handle press is a little tricky. With if statements it determines if a primary or secondary emotion was selected and runs the updateMood()
   // function accordingly and also sets the state of this.state.primary or this.state.secondary to the selected emotion path so that the user
@@ -85,7 +84,7 @@ class HomeScreen extends Component {
   }
   // this is a function purely for the reset button to go back to the primary emotion list, it also resets this.state.primary and this.state.secondary
   resetAll() {
-    this.updateMoods(null, null);
+    this.setState({moods:['happy','angry','disgusted','sad','surprised','fearful']})
     this.setState({ primary: null, secondary: null, tertiary: null })
   }
 
@@ -117,7 +116,7 @@ class HomeScreen extends Component {
             } else if (this.state.moods[0].secondary_emotion) {
               button = <FeelingButton onPress={(e) => this.handlePress(e, this.state.primary, item.secondary_emotion)} key={item.secondary_emotion} emotion={item.secondary_emotion}></FeelingButton>
             } else {
-              button = <FeelingButton onPress={(e) => this.handlePress(e, item.primary_emotion)} key={item.primary_emotion} emotion={item.primary_emotion}></FeelingButton>
+              button = <FeelingButton onPress={(e) => this.handlePress(e, item)} key={item} emotion={item}></FeelingButton>
             }
             return button
           })

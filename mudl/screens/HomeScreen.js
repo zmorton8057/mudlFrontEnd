@@ -64,7 +64,7 @@ class HomeScreen extends Component {
             mantra: json.mantra,
             exercise: json.exercise,
             note: json.note,
-            def: json.tertiary_emotion_def,
+            def: json.tertiary_emotion_def ||json.secondary_emotion_def,
             primary_emotion:json.primary_emotion,
             secondary_emotion:json.secondary_emotion,
             tertiary_emotion:json.tertiary_emotion,

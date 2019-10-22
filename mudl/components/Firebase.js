@@ -82,11 +82,13 @@ signin = (email,Password) =>
 
     <View style = {{marginTop : 40,flexDirection : 'row'}}>
        <Button
+       style={{width: 150, padding:10}}
        title="Sign In"
        onPress = {() => this.signin(this.state.email,this.state.Password)}
       />
 
      <Button
+     style={{width: 150, padding:10}}
        title="Sign UP"
        onPress = {() => this.signup(this.state.email,this.state.Password)}
      />

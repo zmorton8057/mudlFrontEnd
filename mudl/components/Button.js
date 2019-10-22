@@ -6,9 +6,9 @@ import {
 
 const FeelingButton = props => {
     return (
-        <View>
+        <View style={styles.button}>
             <TouchableHighlight
-                style={styles.button}
+                
                 onPress={props.onPress}>
                 <Text style={styles.text}>{props.emotion}</Text>
             </TouchableHighlight>
@@ -19,16 +19,16 @@ const FeelingButton = props => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#1ebbd7',
-        padding: 10,
-        borderRadius: 10,
-        margin: 10,
-        width: 300
+        backgroundColor: '#1ebbd0',
+        padding: 12,
+        borderBottomColor: 'white',
+        borderBottomWidth: 3,
+        opacity: 5
     },
     text: {
         color: 'white',
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'left'
     }
 });
 

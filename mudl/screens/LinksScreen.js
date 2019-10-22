@@ -1,13 +1,11 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
 import Firebase from '../components/Firebase';
 
 export default function LinksScreen() {
   return (
     <ScrollView style={styles.container}>
       <Firebase />
-      <ExpoLinksView />
     </ScrollView>
   );
 }
@@ -15,11 +13,11 @@ export default function LinksScreen() {
 LinksScreen.navigationOptions = {
   title: 'Login',
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    paddingTop: 150,
+    backgroundColor: '#1ebbd0',
+    fontWeight: 'bold'
   },
 });

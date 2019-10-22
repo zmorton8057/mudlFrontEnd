@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import { Ionicons } from '@expo/vector-icons';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -23,13 +24,9 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Login',
   tabBarIcon: ({ focused }) => (
     
-    <TabBarIcon
+    <Ionicons
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      size={32} name={"ios-contact"} color={"#1ebbd0"}
     />
   ),
 };
@@ -46,7 +43,7 @@ const LinksStack = createStackNavigator(
 LinksStack.navigationOptions = {
   tabBarLabel: 'mudl',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <Ionicons focused={focused} size={32} name={"ios-heart-half"} color={"#1ebbd0"}/>
   ),
 };
 
@@ -60,9 +57,9 @@ const SettingsStack = createStackNavigator(
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Profile',
+  tabBarLabel: 'Trend',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <Ionicons focused={focused} size={32} name={"md-trending-up"} color={"#1ebbd0"} />
   ),
 };
 

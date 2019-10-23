@@ -9,11 +9,22 @@ class API {
         console.log(route)
         return axios.get(route)
     }
-
     static getMantra(mantra_id){
         let passinId = mantra_id||"";
         let route = `https://mudl-backend.herokuapp.com/apiroutes/mantras/`
         route+=passinId
+        console.log(route)
+        return axios.get(route)
+    }
+    static addUserEmotion(emotions_id){
+        let route = `https://mudl-backend.herokuapp.com/apiroutes/add/1/`
+        route+=emotions_id
+        console.log(route)
+        return axios.get(route)
+    }
+    static getUserEmotion(user){
+        let route = `https://mudl-backend.herokuapp.com/apiroutes/info/`
+        route+=user
         console.log(route)
         return axios.get(route)
     }

@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+import {Ionicons} from '@expo/vector-icons'
 
 const Profile = props => {
     return (
@@ -19,8 +20,14 @@ const Profile = props => {
               <Text style={styles.info}>UX Designer / Mobile developer</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 1</Text>  
+              <Text>Angry: {props.data.angry}</Text>
+              <Text>Disgusted: {props.data.disgusted}</Text>
+              <Text>Sad: {props.data.sad}</Text>
+              <Text>Happy: {props.data.happy}</Text>
+              <Text>Surprised: {props.data.surprised}</Text>
+              <Text>Fearful: {props.data.fearful}</Text>
+              <TouchableOpacity onPress={props.press} style={styles.buttonContainer}>
+                 <Ionicons name={"md-refresh"}></Ionicons>
               </TouchableOpacity>              
               <TouchableOpacity style={styles.buttonContainer}>
                 <Text>Opcion 2</Text> 

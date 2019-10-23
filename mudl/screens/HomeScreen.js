@@ -56,6 +56,7 @@ class HomeScreen extends Component {
   // can see their last selected emotion
   finalEmotionHandle(tertiary_emotion, id) {
     this.setState({ tertiary: tertiary_emotion })
+    API.addUserEmotion(id)
     API.getMantra(id)
       .then((data) => {
         let json = data.data[0]
@@ -95,7 +96,7 @@ class HomeScreen extends Component {
       return (
         <View>
         <Mantra def={info.def} mantra={info.mantra} exercise={info.exercise} note={info.note}></Mantra>
-        <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'reset'}></FeelingButton>
+        <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
         </View>
       )
     } else {
@@ -121,7 +122,7 @@ class HomeScreen extends Component {
             return button
           })
         }
-        <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'reset'}></FeelingButton>
+        <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
       </View>
       )
     }

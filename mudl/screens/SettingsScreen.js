@@ -7,6 +7,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Profile from '../components/Profile'
+import API from  '../api/api'
+import Button from '../components/Button'
 
 class ProfileScreen extends Component {
   // the state variables are used to populate the moods on the screen by querying the api through the API.updatemoods function
@@ -15,14 +17,27 @@ class ProfileScreen extends Component {
     super(props)
     this.state = {
       user:'Zacharai Motron',
+      data:null
     }
   }
+  getInfo() {
+    API.getUserEmotion(1)
+    .then((data) => {
+      this.setState({data: data.data})
+    })
+  }
+  componentDidMount(){
+    this.getInfo()
+  }
+  handlePress(){
+    this.getInfo()
+  }
+
     render() {
       return (
         <View>
-          <Profile user={this.state.user}></Profile>
+          <Profile data={this.state.data || {}} user={this.state.user} press={() =>{this.handlePress()}}></Profile>
         </View>
-
       )
     }
   }

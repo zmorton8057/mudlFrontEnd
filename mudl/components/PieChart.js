@@ -1,19 +1,20 @@
 import React from 'react';
-import { Chart } from '@bit/primefaces.primereact.chart';
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit'
 
-const data = {
-  labels: ['A', 'B', 'C'],
+const BarData = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
   datasets: [
     {
-      data: [300, 50, 100],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-      hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-    }
-  ]
+      data: [20, 45, 28, 80, 99, 43],
+    },
+  ],
 };
- 
-export default (
-  <div style={{ width: 400 }}>
-    <Chart type='doughnut' data={data} />
-  </div>
-);
+
+export default BarData

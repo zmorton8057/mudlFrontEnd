@@ -9,6 +9,14 @@ import {
 import Profile from '../components/Profile'
 import API from  '../api/api'
 import Button from '../components/Button'
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit'
 
 class ProfileScreen extends Component {
   // the state variables are used to populate the moods on the screen by querying the api through the API.updatemoods function

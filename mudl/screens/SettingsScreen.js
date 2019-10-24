@@ -31,7 +31,11 @@ class ProfileScreen extends Component {
   getInfo() {
     API.getUserEmotion(1)
     .then((data) => {
-      this.setState({data: data.data})
+      let info =data.data
+      for(item in info){
+        info[item]= Number(info[item])
+      }
+      this.setState({data: info})
     })
   }
   componentDidMount(){

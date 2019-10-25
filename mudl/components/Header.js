@@ -1,16 +1,14 @@
 import React from 'react';
 import {
     TouchableHighlight,
-    StyleSheet, View, Text
+    StyleSheet, View, Text, Dimensions,Image
 } from 'react-native';
 
 
 const HeaderHome = props => {
     return (
-        <View>
-            
-            <Text style={styles.headerText}>müdl</Text>
-            
+        <View style={styles.headerBackground}>
+            <Image style={styles.logo} source={require('../mudl-logo-white.png')} />
         </View>
 
     )
@@ -19,14 +17,14 @@ const HeaderHome = props => {
 
 
 const styles = StyleSheet.create({
-    
-    headerText: {
-        color: '#1ebbd7',
-        fontSize: 50,
-        marginLeft: 30,
-        marginTop: 30,
-        marginBottom: 10,
-           
+
+    headerBackground : {
+        backgroundColor: "#00232d"
+
+    },
+    logo:{
+        width: (Dimensions.get("window").width)*.5,
+        height: 75
     }
 });
 

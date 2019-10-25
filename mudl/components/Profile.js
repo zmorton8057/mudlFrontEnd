@@ -16,14 +16,14 @@ import {
   ContributionGraph,
   StackedBarChart
 } from 'react-native-chart-kit'
+import Header from  './Header'
 
 
 const Profile = props => {
   return (
 
     <View style={styles.container}>
-      <View style={styles.header}></View>
-      <Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+      <Header/>
       <View style={styles.body}>
 
         <View style={styles.bodyContent}>

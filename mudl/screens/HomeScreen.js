@@ -27,6 +27,7 @@ class HomeScreen extends Component {
       primary: null,
       secondary: null,
       tertiary: null,
+      emotions_id: null,
       mantraInfo: {}
     }
   }
@@ -49,7 +50,28 @@ class HomeScreen extends Component {
   // this componentDidMount initializes the first page by running the updateMoods() function with no parameters to get the default
   // first 6 primary emotions
   componentDidMount() {
-    this.setState({moods:['happy','angry','disgusted','sad','surprised','fearful']})
+    this.setState({ moods: ['happy', 'angry', 'disgusted', 'sad', 'surprised', 'fearful'] })
+  }
+  // this function get mantra is used to update a new mantra and or advice based on a passed in emotion ID used after final emotion select
+  //  and for refreshing page
+  getMantraUpdateState(id) {
+    this.setState({ emotions_id: id })
+    API.getMantra(id)
+      .then((data) => {
+        let json = data.data
+        console.log(json)
+        this.setState({
+          mantraInfo: {
+            mantra: json.mantra,
+            advice: json.advice.replace(/''/g,"'"),
+            def: json.tertiary_emotion_def || json.secondary_emotion_def,
+            primary_emotion: json.primary_emotion,
+            secondary_emotion: json.secondary_emotion,
+            tertiary_emotion: json.tertiary_emotion,
+
+          }
+        })
+      })
   }
   // this handle press is a little tricky. With if statements it determines if a primary or secondary emotion was selected and runs the updateMood()
   // function accordingly and also sets the state of this.state.primary or this.state.secondary to the selected emotion path so that the user
@@ -57,22 +79,8 @@ class HomeScreen extends Component {
   finalEmotionHandle(tertiary_emotion, id) {
     this.setState({ tertiary: tertiary_emotion })
     API.addUserEmotion(id)
-    API.getMantra(id)
-      .then((data) => {
-        let json = data.data[0]
-        this.setState({
-          mantraInfo: {
-            mantra: json.mantra,
-            exercise: json.exercise,
-            note: json.note,
-            def: json.tertiary_emotion_def ||json.secondary_emotion_def,
-            primary_emotion:json.primary_emotion,
-            secondary_emotion:json.secondary_emotion,
-            tertiary_emotion:json.tertiary_emotion,
+    this.getMantraUpdateState(id)
 
-          }
-        })
-      })
   }
   handlePress(e, primary_emotion, secondary_emotion) {
     if (primary_emotion && secondary_emotion) {
@@ -85,7 +93,7 @@ class HomeScreen extends Component {
   }
   // this is a function purely for the reset button to go back to the primary emotion list, it also resets this.state.primary and this.state.secondary
   resetAll() {
-    this.setState({moods:['happy','angry','disgusted','sad','surprised','fearful']})
+    this.setState({ moods: ['happy', 'angry', 'disgusted', 'sad', 'surprised', 'fearful'] })
     this.setState({ primary: null, secondary: null, tertiary: null })
   }
 
@@ -94,19 +102,25 @@ class HomeScreen extends Component {
       let info = this.state.mantraInfo
       console.log(info)
       return (
+        <ScrollView>
         <View>
-        <Mantra def={info.def} mantra={info.mantra} exercise={info.exercise} note={info.note}></Mantra>
-        <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
+          <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
+          <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
+          <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>  
         </View>
+        </ScrollView>
+       
       )
     } else {
-      return (<View>
-
-
-        <HeaderHome></HeaderHome>
-
+      return (
+        <ScrollView>
+      <View>
+  <HeaderHome></HeaderHome>
         {/* this text are just states last chosen emotion(s) */}
-        <Text>Your last chosen emotion: {(this.state.primary || "") + "-> " + (this.state.secondary || "")}</Text>
+        <View style={styles.lastEmotion}>
+          <Text style={styles.lastEmotionText}>Your last chosen emotion: </Text>
+          <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "-> " + (this.state.secondary || "")}</Text>
+        </View>
         {
 
           // this map function determines if the array contains a primary secondary or tertiary emotion in the array and renders accordingly
@@ -124,10 +138,22 @@ class HomeScreen extends Component {
         }
         <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
       </View>
+      </ScrollView>
       )
     }
   }
 }
+const styles = StyleSheet.create({
+
+  lastEmotion: {
+    height: 75,
+    backgroundColor: 'gray'
+  },
+  lastEmotionText: {
+    color:'white',
+    fontSize:30
+  }
+});
 
 
 export default HomeScreen

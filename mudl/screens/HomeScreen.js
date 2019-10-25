@@ -27,6 +27,7 @@ class HomeScreen extends Component {
       primary: null,
       secondary: null,
       tertiary: null,
+      emotions_id:null,
       mantraInfo: {}
     }
   }
@@ -51,20 +52,18 @@ class HomeScreen extends Component {
   componentDidMount() {
     this.setState({moods:['happy','angry','disgusted','sad','surprised','fearful']})
   }
-  // this handle press is a little tricky. With if statements it determines if a primary or secondary emotion was selected and runs the updateMood()
-  // function accordingly and also sets the state of this.state.primary or this.state.secondary to the selected emotion path so that the user
-  // can see their last selected emotion
-  finalEmotionHandle(tertiary_emotion, id) {
-    this.setState({ tertiary: tertiary_emotion })
-    API.addUserEmotion(id)
+  // this function get mantra is used to update a new mantra and or advice based on a passed in emotion ID used after final emotion select
+  //  and for refreshing page
+  getMantraUpdateState(id){
+    this.setState({emotions_id: id})
     API.getMantra(id)
       .then((data) => {
-        let json = data.data[0]
+        let json = data.data
+        console.log(json)
         this.setState({
           mantraInfo: {
             mantra: json.mantra,
-            exercise: json.exercise,
-            note: json.note,
+            advice: json.advice,
             def: json.tertiary_emotion_def ||json.secondary_emotion_def,
             primary_emotion:json.primary_emotion,
             secondary_emotion:json.secondary_emotion,
@@ -73,6 +72,15 @@ class HomeScreen extends Component {
           }
         })
       })
+  }
+  // this handle press is a little tricky. With if statements it determines if a primary or secondary emotion was selected and runs the updateMood()
+  // function accordingly and also sets the state of this.state.primary or this.state.secondary to the selected emotion path so that the user
+  // can see their last selected emotion
+  finalEmotionHandle(tertiary_emotion, id) {
+    this.setState({ tertiary: tertiary_emotion })
+    API.addUserEmotion(id)
+    this.getMantraUpdateState(id)
+    
   }
   handlePress(e, primary_emotion, secondary_emotion) {
     if (primary_emotion && secondary_emotion) {
@@ -95,8 +103,9 @@ class HomeScreen extends Component {
       console.log(info)
       return (
         <View>
-        <Mantra def={info.def} mantra={info.mantra} exercise={info.exercise} note={info.note}></Mantra>
+        <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
         <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
+        <FeelingButton onPress={() => {this.getMantraUpdateState(this.state.emotions_id)}} emotion={'Get new mantra'}></FeelingButton>
         </View>
       )
     } else {

@@ -12,8 +12,7 @@ const Mantra = props => {
             <Text style={styles.headerText}>müdl</Text>
             <Text style={styles.plainText}>Are you feeling {props.def}?</Text>
             <Text style={styles.plainText}>Here is mantra for you: {props.mantra}</Text>
-            <Text style={styles.plainText}>{props.note}</Text>
-            <Text style={styles.plainText}>{props.exercise}</Text>
+            <Text style={styles.plainText}>{props.advice}</Text>
             
         </View>
 

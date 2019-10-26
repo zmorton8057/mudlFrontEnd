@@ -98,6 +98,8 @@ const Profile = props => {
             accessor="population"
             backgroundColor="transparent"
             paddingLeft="15"
+            animate="true"
+            animationDuration="300"
           />
         </View>
       </View>

@@ -29,13 +29,15 @@ class ProfileScreen extends Component {
     }
   }
   getInfo() {
-    API.getUserEmotion(1)
+    // pass in username/uniqure id here to API.getUserEmotion
+    API.getUserEmotion('zac')
     .then((data) => {
       let info =data.data
       for(item in info){
         info[item]= Number(info[item])
       }
       this.setState({data: info})
+      console.log(info)
     })
   }
   componentDidMount(){

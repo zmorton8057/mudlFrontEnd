@@ -78,7 +78,9 @@ class HomeScreen extends Component {
   // can see their last selected emotion
   finalEmotionHandle(tertiary_emotion, id) {
     this.setState({ tertiary: tertiary_emotion })
-    API.addUserEmotion(id)
+    // HERE IS FUNCTION TO ADD USER CLICK TO DB
+    // 
+    API.addUserEmotion('zac',id)
     this.getMantraUpdateState(id)
 
   }

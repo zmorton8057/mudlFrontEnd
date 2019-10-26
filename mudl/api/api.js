@@ -16,9 +16,9 @@ class API {
         console.log(route)
         return axios.get(route)
     }
-    static addUserEmotion(emotions_id){
-        let route = `https://mudl-backend.herokuapp.com/apiroutes/add/1/`
-        route+=emotions_id
+    static addUserEmotion(user,emotions_id){
+        let route = `https://mudl-backend.herokuapp.com/apiroutes/add/`
+        route+=user+"/"+emotions_id
         console.log(route)
         return axios.get(route)
     }

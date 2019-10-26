@@ -10,7 +10,6 @@ const Mantra = props => {
     return (
         <View>
             <View style={styles.headerBackground}>
-                <Header/>
             </View>
             <Text style={styles.plainText}>Are you feeling {props.def}?</Text>
             <Text style={styles.plainText}>Here is mantra for you: {props.mantra}</Text>
@@ -34,11 +33,12 @@ const styles = StyleSheet.create({
 
     },
     plainText: {
-        color: 'blue',
-        fontSize: 15,
+        color: 'white',
+        fontSize: 22,
         marginLeft: 20,
         marginTop: 20,
         marginBottom: 5,
+        fontFamily : 'Helvetica'
     }
 });
 

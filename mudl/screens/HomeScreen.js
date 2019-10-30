@@ -9,13 +9,16 @@ import {
   Text,
   TouchableOpacity,
   View,
-  findNodeHandle
+  findNodeHandle,
+  ImageBackground 
 } from 'react-native';
 import Firebase from '../components/Firebase'
 import FeelingButton from '../components/Button';
+import ResetButton from '../components/ResetButton';
 import Header from '../components/Header';
 import Mantra from '../components/Mantra'
 import API from '../api/api.js'
+import BackgroundImage from '../assets/images/Sunset-Background.jpg'
 
 class HomeScreen extends Component {
   // the state variables are used to populate the moods on the screen by querying the api through the API.updatemoods function
@@ -116,6 +119,7 @@ class HomeScreen extends Component {
       )
     } else {
       return (
+        <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
         <ScrollView>
           <View>
             <Header />
@@ -139,9 +143,10 @@ class HomeScreen extends Component {
                 return button
               })
             }
-            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
+            <ResetButton onPress={(e) => this.resetAll(e)} ></ResetButton>
           </View>
         </ScrollView>
+        </ImageBackground>
       )
     }
   }
@@ -162,6 +167,10 @@ const styles = StyleSheet.create({
     borderColor: '#00232d',
     borderStyle: 'solid',
     borderRadius: 20
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '100%'
   }
 });
 

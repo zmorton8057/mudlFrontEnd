@@ -16,6 +16,8 @@ import FeelingButton from '../components/Button';
 import Header from '../components/Header';
 import Mantra from '../components/Mantra'
 import API from '../api/api.js'
+import Story from 'react-native-story'
+
 
 class HomeScreen extends Component {
   // the state variables are used to populate the moods on the screen by querying the api through the API.updatemoods function
@@ -97,13 +99,19 @@ class HomeScreen extends Component {
     this.setState({ primary: null, secondary: null, tertiary: null })
   }
 
+  
+
   render() {
+
+
+
     if (this.state.tertiary) {
       let info = this.state.mantraInfo
       console.log(info)
       return (
         <ScrollView>
           <View style={styles.back}>
+            
             <Header />
             <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
             <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
@@ -128,7 +136,7 @@ class HomeScreen extends Component {
               this.state.moods.map((item, index) => {
                 let button;
                 if (this.state.moods[0].tertiary_emotion) {
-                  button = <FeelingButton onPress={(e) => this.finalEmotionHandle(item.tertiary_emotion, item.id)} def={item.tertiary_emotion_def||item.secondary_emotion_def} key={item.tertiary_emotion} emotion={item.tertiary_emotion}></FeelingButton>
+                  button = <FeelingButton onPress={(e) => this.finalEmotionHandle(item.tertiary_emotion, item.id)} def={item.tertiary_emotion_def || item.secondary_emotion_def} key={item.tertiary_emotion} emotion={item.tertiary_emotion}></FeelingButton>
                 } else if (this.state.moods[0].secondary_emotion) {
                   button = <FeelingButton onPress={(e) => this.handlePress(e, this.state.primary, item.secondary_emotion)} def={item.secondary_emotion_def} key={item.secondary_emotion} emotion={item.secondary_emotion}></FeelingButton>
                 } else {

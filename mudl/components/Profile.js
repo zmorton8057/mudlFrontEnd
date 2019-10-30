@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  ScrollView
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 import {
@@ -16,94 +17,101 @@ import {
   ContributionGraph,
   StackedBarChart
 } from 'react-native-chart-kit'
-import Header from  './Header'
+import Header from './Header'
+import NumberDisplay from './NumberDisplay';
 
 
 const Profile = props => {
   return (
-
-    <View style={styles.container}>
-      <Header/>
-      <View style={styles.body}>
-
-        <View style={styles.bodyContent}>
+    <ScrollView>
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.headingInfo}>
           <Text style={styles.name}>{props.user}</Text>
           <Text style={styles.info}>30 Day Primary Emotion Log</Text>
-          <TouchableOpacity onPress={props.press} >
-            <Ionicons style={styles.refresh} size={32} name={"md-refresh"}></Ionicons>
-          </TouchableOpacity>
+        </View>
+        <TouchableOpacity onPress={props.press} >
+          <Ionicons style={styles.refresh} size={32} name={"md-refresh"}></Ionicons>
+        </TouchableOpacity>
+        <NumberDisplay data={props.data || {}} />
+        <View style={styles.body}>
 
-          <PieChart
+          <View style={styles.bodyContent}>
 
-            data={[
-              {
-                name: 'Angry',
-                population: (props.data.angry)||1,
-                color: '#A3E7FC',
-                legendFontColor: '#00232d',
-                legendFontSize: 15,
-              },
-              {
-                name: 'Disgusted',
-                population: (props.data.disgusted)||1,
-                color: '#259FC4',
-                legendFontColor: '#00232d',
-                legendFontSize: 15,
-              },
-              {
-                name: 'Sad',
-                population: (props.data.sad)||1,
-                color: '#31798E',
-                legendFontColor: '#00232d',
-                legendFontSize: 15,
-              },
-              {
-                name: 'Happy',
-                population: (props.data.happy)||1,
-                color: '#394D54',
-                legendFontColor: '#00232d',
-                legendFontSize: 15,
-              },
-              {
-                name: 'Surprised',
-                population: (props.data.surprised)||1,
-                color: '#00232d',
-                legendFontColor: '#00232d',
-                legendFontSize: 15,
-              },
-              {
-                name: 'Fearful',
-                population: (props.data.fearful)||1,
-                color: '#90CBDD',
-                legendFontColor: '#00232d',
-                legendFontSize: 15,
-              },
-            ]}
-            width={Dimensions.get("window").width}
-            height={220}
-            chartConfig={{
-              backgroundColor: '#1cc910',
-              backgroundGradientFrom: '#eff3ff',
-              backgroundGradientTo: '#efefef',
-              decimalPlaces: 2,
-              color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-              style: {
-                borderRadius: 20,
-              },
-            }}
-            style={{
-              marginVertical: 8,
-              borderRadius: 16,
-            }}
-            accessor="population"
-            backgroundColor="transparent"
-            paddingLeft="15"
-            animate="true"
-            animationDuration="300"
-          />
+
+
+            <PieChart
+
+              data={[
+                {
+                  name: 'Angry',
+                  population: (props.data.angry) || .1,
+                  color: '#A3E7FC',
+                  legendFontColor: '#A3E7FC',
+                  legendFontSize: 15,
+                },
+                {
+                  name: 'Disgusted',
+                  population: (props.data.disgusted) || .1,
+                  color: '#259FC4',
+                  legendFontColor: '#A3E7FC',
+                  legendFontSize: 15,
+                },
+                {
+                  name: 'Sad',
+                  population: (props.data.sad) || .1,
+                  color: '#31798E',
+                  legendFontColor: '#A3E7FC',
+                  legendFontSize: 15,
+                },
+                {
+                  name: 'Happy',
+                  population: (props.data.happy) || .1,
+                  color: '#394D54',
+                  legendFontColor: '#A3E7FC',
+                  legendFontSize: 15,
+                },
+                {
+                  name: 'Surprised',
+                  population: (props.data.surprised) || .1,
+                  color: '#4a646d',
+                  legendFontColor: '#A3E7FC',
+                  legendFontSize: 15,
+                },
+                {
+                  name: 'Fearful',
+                  population: (props.data.fearful) || .1,
+                  color: '#90CBDD',
+                  legendFontColor: '#A3E7FC',
+                  legendFontSize: 15,
+                },
+              ]}
+              width={Dimensions.get("window").width}
+              height={220}
+              chartConfig={{
+                backgroundColor: '#1cc910',
+                backgroundGradientFrom: '#eff3ff',
+                backgroundGradientTo: '#efefef',
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                style: {
+                  borderRadius: 20,
+                },
+              }}
+              style={{
+                marginVertical: 8,
+                borderRadius: 16,
+              }}
+              accessor="population"
+              backgroundColor="transparent"
+              paddingLeft="15"
+              animate="true"
+              animationDuration="300"
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -127,36 +135,45 @@ const styles = StyleSheet.create({
     marginTop: 45,
   },
   name: {
-    fontSize: 22,
-    color: "#00232d",
+    fontSize: 30,
+    color: "#A3E7FC",
     fontWeight: '600',
     zIndex: 1
   },
   body: {
-    marginTop: 40,
+    marginTop: 10,
   },
   bodyContent: {
     alignItems: 'center',
     padding: 30,
   },
   name: {
-    fontSize: 28,
-    color: "#00232d",
-    fontWeight: "600"
+    fontSize: 40,
+    color: "#ffffff",
+    fontWeight: "800",
   },
   info: {
-    fontSize: 16,
-    color: "#00232d",
-    marginTop: 10
+    fontSize: 30,
+    color: "#a0d9d6",
+    marginTop: 10,
+    fontWeight: "600",
   },
   description: {
     fontSize: 16,
-    color: "#00232d",
+    color: "#A3E7FC",
     marginTop: 10,
     textAlign: 'center'
   },
   refresh: {
-    textAlign: 'right'
+    textAlign: 'left',
+    color: '#a0d9d6',
+    margin:10
+  },
+  container: {
+    backgroundColor: '#00232D',
+  },
+  headingInfo: {
+    marginLeft: 10
   }
 });
 

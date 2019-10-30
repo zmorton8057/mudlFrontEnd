@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20,
         textAlign: 'left',
-        padding: 12
+        padding: 12,
+        fontFamily: 'roboto-regular'
     },
     highlight: {
         width: Dimensions.get("window").width

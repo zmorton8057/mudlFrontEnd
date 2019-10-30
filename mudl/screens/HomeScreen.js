@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
   findNodeHandle,
-  ImageBackground 
+  ImageBackground
 } from 'react-native';
 import Firebase from '../components/Firebase'
 import FeelingButton from '../components/Button';
@@ -83,7 +83,7 @@ class HomeScreen extends Component {
     this.setState({ tertiary: tertiary_emotion })
     // HERE IS FUNCTION TO ADD USER CLICK TO DB
     // 
-    API.addUserEmotion('zac',id)
+    API.addUserEmotion('zac', id)
     this.getMantraUpdateState(id)
 
   }
@@ -112,7 +112,7 @@ class HomeScreen extends Component {
             <Header />
             <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
             <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
-            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
+            <ResetButton onPress={(e) => this.resetAll(e)} ></ResetButton>
           </View>
         </ScrollView>
 
@@ -120,32 +120,32 @@ class HomeScreen extends Component {
     } else {
       return (
         <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
-        <ScrollView>
-          <View>
-            <Header />
-            {/* this text are just states last chosen emotion(s) */}
-            <View style={styles.lastEmotion}>
-              <Text style={styles.lastEmotionText}>Your last chosen emotion: </Text>
-              <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "-> " + (this.state.secondary || "")}</Text>
-            </View>
-            {
+          <ScrollView>
+            <View>
+              <Header />
+              {/* this text are just states last chosen emotion(s) */}
+              <View style={styles.lastEmotion}>
+                <Text style={styles.lastEmotionText}>Your last chosen emotion: </Text>
+                <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "-> " + (this.state.secondary || "")}</Text>
+              </View>
+              {
 
-              // this map function determines if the array contains a primary secondary or tertiary emotion in the array and renders accordingly
-              this.state.moods.map((item, index) => {
-                let button;
-                if (this.state.moods[0].tertiary_emotion) {
-                  button = <FeelingButton onPress={(e) => this.finalEmotionHandle(item.tertiary_emotion, item.id)} def={item.tertiary_emotion_def||item.secondary_emotion_def} key={item.tertiary_emotion} emotion={item.tertiary_emotion}></FeelingButton>
-                } else if (this.state.moods[0].secondary_emotion) {
-                  button = <FeelingButton onPress={(e) => this.handlePress(e, this.state.primary, item.secondary_emotion)} def={item.secondary_emotion_def} key={item.secondary_emotion} emotion={item.secondary_emotion}></FeelingButton>
-                } else {
-                  button = <FeelingButton onPress={(e) => this.handlePress(e, item)} def={null} key={item} emotion={item}></FeelingButton>
-                }
-                return button
-              })
-            }
-            <ResetButton onPress={(e) => this.resetAll(e)} ></ResetButton>
-          </View>
-        </ScrollView>
+                // this map function determines if the array contains a primary secondary or tertiary emotion in the array and renders accordingly
+                this.state.moods.map((item, index) => {
+                  let button;
+                  if (this.state.moods[0].tertiary_emotion) {
+                    button = <FeelingButton onPress={(e) => this.finalEmotionHandle(item.tertiary_emotion, item.id)} def={item.tertiary_emotion_def || item.secondary_emotion_def} key={item.tertiary_emotion} emotion={item.tertiary_emotion}></FeelingButton>
+                  } else if (this.state.moods[0].secondary_emotion) {
+                    button = <FeelingButton onPress={(e) => this.handlePress(e, this.state.primary, item.secondary_emotion)} def={item.secondary_emotion_def} key={item.secondary_emotion} emotion={item.secondary_emotion}></FeelingButton>
+                  } else {
+                    button = <FeelingButton onPress={(e) => this.handlePress(e, item)} def={null} key={item} emotion={item}></FeelingButton>
+                  }
+                  return button
+                })
+              }
+              <ResetButton onPress={(e) => this.resetAll(e)} ></ResetButton>
+            </View>
+          </ScrollView>
         </ImageBackground>
       )
     }
@@ -163,7 +163,8 @@ const styles = StyleSheet.create({
   },
   back: {
     backgroundColor: '#00232d',
-    marginBottom: 10
+    marginBottom: 10,
+    fontFamily: 'hangover-brush'
   },
   backgroundImage: {
     width: '100%',

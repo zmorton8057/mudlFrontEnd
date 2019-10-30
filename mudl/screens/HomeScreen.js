@@ -163,10 +163,7 @@ const styles = StyleSheet.create({
   },
   back: {
     backgroundColor: '#00232d',
-    borderWidth: 15,
-    borderColor: '#00232d',
-    borderStyle: 'solid',
-    borderRadius: 20
+    marginBottom: 10
   },
   backgroundImage: {
     width: '100%',

@@ -42,10 +42,8 @@ export default ResetButton;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#0e606b',
-        borderBottomColor: 'white',
-        borderBottomWidth: 3,
-        opacity: 5
+        backgroundColor: '#rgba(14, 96, 107, .4)',
+        marginTop: 4
     },
     text: {
         color: 'white',

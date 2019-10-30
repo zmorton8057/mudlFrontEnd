@@ -53,10 +53,8 @@ export default FeelingButton;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#1ebbd0',
-        borderBottomColor: 'white',
-        borderBottomWidth: 3,
-        opacity: 5
+        backgroundColor: 'rgba(30, 187, 208, 0.4)',
+        marginTop: 4,
     },
     text: {
         color: 'white',

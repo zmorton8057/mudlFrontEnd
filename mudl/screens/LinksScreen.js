@@ -9,10 +9,6 @@ export default function LinksScreen() {
     </ScrollView>
   );
 }
-
-LinksScreen.navigationOptions = {
-  title: 'Login',
-};
 const styles = StyleSheet.create({
   container: {
     flex: 1,

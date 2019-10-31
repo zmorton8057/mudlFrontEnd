@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Profile from '../components/Profile'
-import API from  '../api/api'
+import API from '../api/api'
 import Button from '../components/Button'
 import {
   LineChart,
@@ -17,6 +17,8 @@ import {
   ContributionGraph,
   StackedBarChart
 } from 'react-native-chart-kit'
+import FireCheck from '../components/FireCheck'
+import Firebase from '../components/Firebase'
 
 class ProfileScreen extends Component {
   // the state variables are used to populate the moods on the screen by querying the api through the API.updatemoods function
@@ -24,36 +26,43 @@ class ProfileScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user:'Zacharai Motron',
-      data:null
+      loggedInAs: '',
+      email: null,
+      loggedIn: null,
+      data: null
     }
   }
   getInfo() {
     // pass in username/uniqure id here to API.getUserEmotion
-    API.getUserEmotion('zac')
-    .then((data) => {
-      let info =data.data
-      for(item in info){
-        info[item]= Number(info[item])
-      }
-      this.setState({data: info})
-      console.log(info)
-    })
+    API.getUserEmotion(this.state.loggedInAs)
+      .then((data) => {
+        let info = data.data
+        for (item in info) {
+          info[item] = Number(info[item])
+        }
+        this.setState({ data: info })
+        console.log(info)
+      })
   }
-  componentDidMount(){
+  componentDidMount() {
+    FireCheck.authCheck(this)
     this.getInfo()
   }
-  handlePress(){
+  handlePress() {
     this.getInfo()
   }
 
-    render() {
+  render() {
+    if (this.state.loggedIn === false) {
+      return (<Firebase />)
+    } else {
       return (
         <View>
-          <Profile data={this.state.data || {}} user={this.state.user} press={() =>{this.handlePress()}}></Profile>
+          <Profile data={this.state.data || {}} user={this.state.email} press={() => { this.handlePress() }}></Profile>
         </View>
       )
     }
   }
+}
 
-  export default ProfileScreen;
+export default ProfileScreen;

@@ -22,6 +22,7 @@ import BackgroundImage from '../assets/images/Sunset-Background.jpg'
 import FireCheck from '../components/FireCheck'
 import Navigator from '../navigation/MainTabNavigator'
 
+
 class HomeScreen extends Component {
   // the state variables are used to populate the moods on the screen by querying the api through the API.updatemoods function
   // primary and secondary states are used to record the last selected emotions for the user
@@ -112,7 +113,10 @@ class HomeScreen extends Component {
     this.setState({ primary: null, secondary: null, tertiary: null })
   }
 
+  
+
   render() {
+
     if(this.state.loggedIn===false){
       return(<Firebase/>)
     }else{
@@ -121,6 +125,7 @@ class HomeScreen extends Component {
       return (
         <ScrollView>
           <View style={styles.back}>
+            
             <Header />
             <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
             <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
@@ -159,6 +164,7 @@ class HomeScreen extends Component {
             </View>
           </ScrollView>
         </ImageBackground>
+
       )
     }
   }

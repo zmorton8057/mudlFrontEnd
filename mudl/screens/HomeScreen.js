@@ -124,7 +124,7 @@ class HomeScreen extends Component {
             <Header />
             <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
             <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
-            <ResetButton onPress={(e) => this.resetAll(e)} ></ResetButton>
+            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'} ></FeelingButton>
           </View>
         </ScrollView>
 
@@ -155,7 +155,7 @@ class HomeScreen extends Component {
                   return button
                 })
               }
-              <ResetButton onPress={(e) => this.resetAll(e)} ></ResetButton>
+              <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
             </View>
           </ScrollView>
         </ImageBackground>

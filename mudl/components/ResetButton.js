@@ -4,7 +4,7 @@ import {
     StyleSheet, View, Text, Dimensions
 } from 'react-native';
 
-class FeelingButton extends React.Component {
+class ResetButton extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -30,31 +30,20 @@ class FeelingButton extends React.Component {
     render() {
         return (
             <View style={styles.button}>
-                <TouchableHighlight style={styles.highlight}
-                    onLongPress={() => { this.handleLongPress(this.props.def, this.props.emotion) }}
-                    onPress={() => {
-                        this.props.onPress();
-                        this.setState({ definition: false, buttonText: this.props.emotion })
-                    }
-                    }>
-                    <Text style={styles.text}>{this.state.buttonText}</Text>
+                <TouchableHighlight style={styles.highlight}>
+                    <Text style={styles.text}>Go to main emotion screen</Text>
                 </TouchableHighlight>
             </View>
-
         )
     }
 }
 
-export default FeelingButton;
-
-
-
-
+export default ResetButton;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: 'rgba(30, 187, 208, 0.4)',
-        marginTop: 4,
+        backgroundColor: '#rgba(14, 96, 107, .4)',
+        marginTop: 4
     },
     text: {
         color: 'white',

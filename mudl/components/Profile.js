@@ -42,6 +42,7 @@ const Profile = props => {
 
             <PieChart
 
+
               data={[
                 {
                   name: 'Angry',
@@ -109,6 +110,7 @@ const Profile = props => {
               animationDuration="300"
             />
           </View>
+
         </View>
       </View>
     </ScrollView>

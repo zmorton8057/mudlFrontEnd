@@ -14,13 +14,10 @@ const HeaderHome = props => {
     )
 }
 
-
-
 const styles = StyleSheet.create({
 
     headerBackground : {
         backgroundColor: "#00232d"
-
     },
     logo:{
         width: (Dimensions.get("window").width)*.5,

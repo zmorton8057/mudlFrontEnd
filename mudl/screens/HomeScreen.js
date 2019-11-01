@@ -16,11 +16,11 @@ import Firebase from '../components/Firebase'
 import FeelingButton from '../components/Button';
 import ResetButton from '../components/ResetButton';
 import Header from '../components/Header';
-import Mantra from '../components/Mantra'
-import API from '../api/api.js'
-import BackgroundImage from '../assets/images/Sunset-Background.jpg'
-import FireCheck from '../components/FireCheck'
-import Navigator from '../navigation/MainTabNavigator'
+import Mantra from '../components/Mantra';
+import API from '../api/api.js';
+import BackgroundImage from '../assets/images/Sunset-Background.jpg';
+import FireCheck from '../components/FireCheck';
+import Navigator from '../navigation/MainTabNavigator';
 
 
 class HomeScreen extends Component {

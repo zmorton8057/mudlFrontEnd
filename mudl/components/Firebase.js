@@ -6,7 +6,9 @@ import {
   View,
   Text,
   StatusBar,
-  Platform
+  Platform,
+  TextInput,
+  TouchableHighlight
 
 } from 'react-native';
 import LinksScreen from '../screens/LinksScreen'
@@ -106,36 +108,38 @@ class Firebase extends React.Component {
     return (
       <View style={styles.container}>
 
-        <Input
-          placeholder='Enter Email'
+        <TextInput
+          placeholder='Enter Email' style={styles.emailinput} keyboardType= 'email-address'
           onChangeText={(email) => this.setState({ email })}
         />
 
-        <Input
-          placeholder='Enter Password'
+        <TextInput
+          placeholder='Enter Password' style={styles.passwordinput}
           onChangeText={(Password) => this.setState({ Password })}
         />
 
-        <View style={{ marginTop: 40, flexDirection: 'row' }}>
-          <Button
-            style={{ width: 150, padding: 10 }}
+        <View style={styles.buttongroup}>
+          <TouchableHighlight
+            style={styles.button}
             title="Sign In"
             onPress={() => this.signin(this.state.email, this.state.Password)}
-          />
+          ><Text>Sign In</Text>
+          </TouchableHighlight>
 
-          <Button
-            style={{ width: 150, padding: 10 }}
-            title="Sign UP"
+          <TouchableHighlight
+            style={styles.button}
+            title="Sign Up"
             onPress={() => this.signup(this.state.email, this.state.Password)}
-          />
+            ><Text>Sign Up</Text>
+            </TouchableHighlight>
 
-          <Button
-            style={{ width: 150, padding: 10 }}
-            title="log off"
+          <TouchableHighlight
+            style={styles.button}
             onPress={this._signOutAsync}
-          />
+            ><Text>Log Out</Text>
+            </TouchableHighlight>
         </View>
-        <Text>{this.state.loggedInAs}</Text>
+        <Text style={styles.loginastext}>{this.state.loggedInAs}</Text>
       </View>
     );
   }
@@ -143,12 +147,49 @@ class Firebase extends React.Component {
 
 
 const styles = StyleSheet.create({
-  container:
-  {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:'#1ebbd0'
+    paddingTop: 100
+  },
+  emailinput: {
+    width: 300,
+    padding: 10,
+    height: 50,
+    borderColor: '#a0d9d6',
+    marginBottom: 5,
+    backgroundColor: 'white',
+    borderWidth: 2,
+    borderRadius: 5,
+    
+  },
+  passwordinput: {
+    width: 300,
+    padding: 10,
+    height: 50,
+    borderColor: '#a0d9d6',
+    marginBottom: 5,
+    backgroundColor: 'white',
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  buttongroup: {
+    marginTop: 20,
+    flexDirection: 'row'
+  },
+  button: {
+    margin: 20,
+    width: 100,
+    height: 50,
+    alignItems: 'center',
+    backgroundColor: '#a0d9d6',
+    borderWidth: 2,
+    borderRadius: 5,
+    paddingTop: 12
+  },
+  loginastext: {
+    color: 'white'
   }
 });
 

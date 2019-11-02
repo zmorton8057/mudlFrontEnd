@@ -69,16 +69,16 @@ const styles = StyleSheet.create({
     },
     number: {
         color: '#a0d9d6',
-        fontSize: 100,
-        fontWeight: '900',
+        fontSize: 60,
+        fontWeight: '700',
         opacity: .8,
         textAlign: 'center',
         justifyContent: 'center',
     },
     numberDisplay: {
         color: '#a0d9d6',
-        fontSize: 20,
-        fontWeight: '900',
+        fontSize: 18,
+        fontWeight: '600',
         opacity: .6,
         textAlign: 'center',
         marginBottom: 2

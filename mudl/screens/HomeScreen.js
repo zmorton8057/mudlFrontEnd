@@ -129,7 +129,7 @@ class HomeScreen extends Component {
             <Header />
             <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
             <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
-            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'} ></FeelingButton>
+            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Begin Again'} ></FeelingButton>
           </View>
         </ScrollView>
 
@@ -142,8 +142,12 @@ class HomeScreen extends Component {
               <Header />
               {/* this text are just states last chosen emotion(s) */}
               <View style={styles.lastEmotion}>
-                <Text style={styles.lastEmotionText}>Your last chosen emotion: </Text>
-                <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "-> " + (this.state.secondary || "")}</Text>
+                <Text style={styles.lastEmotionHeader}>Selections:</Text>
+                <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "    " +(this.state.secondary || "")}</Text>
+              </View>
+              <View style={styles.tutorial}>
+                <Text style={styles.tutorialText}>The 4-7-8 breathing technique, also known as "relaxing breath," involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</Text> 
+                <Text>{'\n'}After, assess your feelings. We know emotions are complicated so respond with how you mostly feel.</Text>
               </View>
               {
 
@@ -160,7 +164,7 @@ class HomeScreen extends Component {
                   return button
                 })
               }
-              <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'}></FeelingButton>
+              <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Start Over'}></FeelingButton>
             </View>
           </ScrollView>
         </ImageBackground>
@@ -174,11 +178,20 @@ const styles = StyleSheet.create({
 
   lastEmotion: {
     height: 75,
-    backgroundColor: 'gray'
+    backgroundColor: 'transparent',
+  },
+  lastEmotionHeader: {
+    backgroundColor: '#00232d',
+    fontSize: 24,
+    color: '#a0d9d6',
+    paddingLeft: 8
   },
   lastEmotionText: {
+    backgroundColor: '#00232d',
+    fontSize: 30,
     color: 'white',
-    fontSize: 30
+    fontFamily: 'hangover-brush',
+    paddingLeft: 8
   },
   back: {
     backgroundColor: '#00232d',
@@ -188,6 +201,16 @@ const styles = StyleSheet.create({
   backgroundImage: {
     width: '100%',
     height: '100%'
+  }, 
+  tutorial:{
+    backgroundColor: 'white',
+    opacity: .6,
+    padding: 5,
+    margin: 10, 
+    fontSize: 12
+  },
+  tutorialText: {
+    color: '#00232d'
   }
 });
 

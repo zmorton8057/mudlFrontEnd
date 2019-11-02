@@ -21,12 +21,12 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Login',
+  tabBarLabel: 'LOGIN',
   tabBarIcon: ({ focused }) => (
     
     <Ionicons
       focused={focused}
-      size={32} name={"ios-contact"} color={"#1ebbd0"}
+      size={32} name={"ios-contact"} color={"#a0d9d6"}
     />
   ),
 };
@@ -41,10 +41,10 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'mudl',
+  tabBarLabel: 'MUDL',
   tabBarIcon: ({ focused }) => (
-    <Ionicons focused={focused} size={32} name={"ios-heart-half"} color={"#1ebbd0"}/>
-  ),
+    <Ionicons focused={focused} size={32} name={"ios-heart-half"} color={"#a0d9d6"}/>
+  )
 };
 
 LinksStack.path = '';
@@ -57,9 +57,9 @@ const SettingsStack = createStackNavigator(
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Trend',
+  tabBarLabel: 'PROFILE',
   tabBarIcon: ({ focused }) => (
-    <Ionicons focused={focused} size={32} name={"md-trending-up"} color={"#1ebbd0"} />
+    <Ionicons focused={focused} size={32} name={"md-trending-up"} color={"#a0d9d6"} />
   ),
 };
 

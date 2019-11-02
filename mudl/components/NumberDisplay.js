@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     numberDisplay: {
         color: '#a0d9d6',
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: '900',
         opacity: .6,
         textAlign: 'center',

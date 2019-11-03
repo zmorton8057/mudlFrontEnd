@@ -5,7 +5,10 @@ MUDL allows a user to specify or identify latent emotions and deliver hyper-targ
 To improve the over mental health of anyone seeking to get a better understanding of themselves and others.
 
 ## UI/UX
-
+![picture](./mudl/assets/images/readMe/mudlLogin.png)
+![picture](./mudl/assets/images/readMe/mudlEmotion.png)
+![picture](./mudl/assets/images/readMe/mudlMantra.png)
+![picture](./mudl/assets/images/readMe/mudlProfile.png)
 ## Technologies Used:
 MERN Stack
 ### Built With:

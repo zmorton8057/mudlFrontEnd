@@ -2,7 +2,7 @@
 MUDL allows a user to specify or identify latent emotions and deliver hyper-targeted solutions, mantras, psychological advice, and games based on the individual’s needs. By creating a unique search method where a user can quickly and easily navigate through over 1,080 unique endpoints on the app. 
 
 ## Motivation
-To improve the over mental health of anyone seeking to get a better understanding of themselves and others.
+To improve mental health of anyone open to a greater understanding of themselves and others.
 
 ## UI/UX
 ![picture](./mudl/assets/images/readMe/mudlLogin.png)
@@ -21,6 +21,7 @@ MERN Stack
 
 ## Features
 User profile that keeps track of your moods over the last month, randomly generated mantra with an option for additional mantras, an encyclopedia of where emotions derive based upon psychological studies and anecdotal evidence.
+Long Press on moods to get a definition
 
 ## Installation
 ### Prequisites

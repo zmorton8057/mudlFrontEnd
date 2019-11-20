@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
     },
     number: {
         color: '#a0d9d6',
-        fontSize: 100,
-        fontWeight: '900',
+        fontSize: 60,
+        fontWeight: '700',
         opacity: .8,
         textAlign: 'center',
         justifyContent: 'center',

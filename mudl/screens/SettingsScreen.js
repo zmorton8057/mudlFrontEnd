@@ -4,11 +4,13 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  YellowBox
 } from 'react-native';
 import Profile from '../components/Profile'
 import API from '../api/api'
 import Button from '../components/Button'
+import Header from '../components/Header'
 import {
   LineChart,
   BarChart,
@@ -43,6 +45,11 @@ class ProfileScreen extends Component {
         this.setState({ data: info })
         console.log(info)
       })
+      .catch((err) => {
+        if (err){
+          // nothing
+        }
+      })
   }
   componentDidMount() {
     FireCheck.authCheck(this)
@@ -53,12 +60,18 @@ class ProfileScreen extends Component {
   }
 
   render() {
+    YellowBox.ignoreWarnings(['Unhandled promise'])
     if (this.state.loggedIn === false) {
-      return (<Firebase />)
+      return (
+        <View>
+        <Header />
+        <Firebase />
+      </View>
+      )
     } else {
       return (
         <View>
-          <Profile data={this.state.data || {}} user={this.state.email} press={() => { this.handlePress() }}></Profile>
+          <Profile data={this.state.data || {}} user={this.state.email||''} press={() => { this.handlePress() }}></Profile>
         </View>
       )
     }

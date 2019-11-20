@@ -8,11 +8,13 @@ import {
   StatusBar,
   Platform,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  YellowBox
 
 } from 'react-native';
 import LinksScreen from '../screens/LinksScreen'
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+YellowBox.ignoreWarnings(['Require cycle:'])
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
@@ -151,7 +153,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 100
+    paddingTop: 100,
+    backgroundColor: '#00232d'
   },
   emailinput: {
     width: 300,

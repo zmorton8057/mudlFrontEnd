@@ -119,12 +119,6 @@ class HomeScreen extends Component {
 
     if (this.state.loggedIn === false) {
       return (
-<<<<<<< HEAD
-        <View>
-          <Header />
-          <Firebase />
-        </View>
-=======
         <ScrollView>
           <View style={styles.back}>
             
@@ -134,22 +128,12 @@ class HomeScreen extends Component {
             <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Begin Again'} ></FeelingButton>
           </View>
         </ScrollView>
-
->>>>>>> 7d2e5d9302ec906d7365e1ae6b87e6809ce83a97
       )
     } else {
       if (this.state.tertiary) {
         let info = this.state.mantraInfo
         return (
           <ScrollView>
-<<<<<<< HEAD
-            <View style={styles.back}>
-
-              <Header />
-              <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
-              <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
-              <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'} ></FeelingButton>
-=======
             <View>
               <Header />
               {/* this text are just states last chosen emotion(s) */}
@@ -177,7 +161,6 @@ class HomeScreen extends Component {
                 })
               }
               <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Start Over'}></FeelingButton>
->>>>>>> 7d2e5d9302ec906d7365e1ae6b87e6809ce83a97
             </View>
           </ScrollView>
 

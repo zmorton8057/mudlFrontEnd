@@ -179,7 +179,8 @@ const styles = StyleSheet.create({
   },
   buttongroup: {
     marginTop: 20,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginHorizontal: 5
   },
   button: {
     margin: 20,

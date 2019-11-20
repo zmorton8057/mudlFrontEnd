@@ -119,22 +119,65 @@ class HomeScreen extends Component {
 
     if (this.state.loggedIn === false) {
       return (
+<<<<<<< HEAD
         <View>
           <Header />
           <Firebase />
         </View>
+=======
+        <ScrollView>
+          <View style={styles.back}>
+            
+            <Header />
+            <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
+            <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
+            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Begin Again'} ></FeelingButton>
+          </View>
+        </ScrollView>
+
+>>>>>>> 7d2e5d9302ec906d7365e1ae6b87e6809ce83a97
       )
     } else {
       if (this.state.tertiary) {
         let info = this.state.mantraInfo
         return (
           <ScrollView>
+<<<<<<< HEAD
             <View style={styles.back}>
 
               <Header />
               <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
               <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
               <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Go to main emotion screen'} ></FeelingButton>
+=======
+            <View>
+              <Header />
+              {/* this text are just states last chosen emotion(s) */}
+              <View style={styles.lastEmotion}>
+                <Text style={styles.lastEmotionHeader}>Selections:</Text>
+                <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "    " +(this.state.secondary || "")}</Text>
+              </View>
+              <View style={styles.tutorial}>
+                <Text style={styles.tutorialText}>The 4-7-8 breathing technique, also known as "relaxing breath," involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</Text> 
+                <Text>{'\n'}After, assess your feelings. We know emotions are complicated so respond with how you mostly feel.</Text>
+              </View>
+              {
+
+                // this map function determines if the array contains a primary secondary or tertiary emotion in the array and renders accordingly
+                this.state.moods.map((item, index) => {
+                  let button;
+                  if (this.state.moods[0].tertiary_emotion) {
+                    button = <FeelingButton onPress={(e) => this.finalEmotionHandle(item.tertiary_emotion, item.id)} def={item.tertiary_emotion_def || item.secondary_emotion_def} key={item.tertiary_emotion} emotion={item.tertiary_emotion}></FeelingButton>
+                  } else if (this.state.moods[0].secondary_emotion) {
+                    button = <FeelingButton onPress={(e) => this.handlePress(e, this.state.primary, item.secondary_emotion)} def={item.secondary_emotion_def} key={item.secondary_emotion} emotion={item.secondary_emotion}></FeelingButton>
+                  } else {
+                    button = <FeelingButton onPress={(e) => this.handlePress(e, item)} def={null} key={item} emotion={item}></FeelingButton>
+                  }
+                  return button
+                })
+              }
+              <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Start Over'}></FeelingButton>
+>>>>>>> 7d2e5d9302ec906d7365e1ae6b87e6809ce83a97
             </View>
           </ScrollView>
 
@@ -179,11 +222,20 @@ const styles = StyleSheet.create({
 
   lastEmotion: {
     height: 75,
-    backgroundColor: 'gray'
+    backgroundColor: 'transparent',
+  },
+  lastEmotionHeader: {
+    backgroundColor: '#00232d',
+    fontSize: 24,
+    color: '#a0d9d6',
+    paddingLeft: 8
   },
   lastEmotionText: {
+    backgroundColor: '#00232d',
+    fontSize: 30,
     color: 'white',
-    fontSize: 30
+    fontFamily: 'hangover-brush',
+    paddingLeft: 8
   },
   back: {
     backgroundColor: '#00232d',
@@ -193,6 +245,16 @@ const styles = StyleSheet.create({
   backgroundImage: {
     width: '100%',
     height: '100%'
+  }, 
+  tutorial:{
+    backgroundColor: 'white',
+    opacity: .6,
+    padding: 5,
+    margin: 10, 
+    fontSize: 12
+  },
+  tutorialText: {
+    color: '#00232d'
   }
 });
 

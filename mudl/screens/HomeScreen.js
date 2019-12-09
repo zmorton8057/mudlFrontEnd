@@ -119,47 +119,21 @@ class HomeScreen extends Component {
 
     if (this.state.loggedIn === false) {
       return (
-        <ScrollView>
-          <View style={styles.back}>
-            
-            <Header />
-            <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
-            <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
-            <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Begin Again'} ></FeelingButton>
-          </View>
-        </ScrollView>
+        <View>
+          <Header />
+          <Firebase />
+        </View>
       )
     } else {
       if (this.state.tertiary) {
         let info = this.state.mantraInfo
         return (
           <ScrollView>
-            <View>
-              <Header />
-              {/* this text are just states last chosen emotion(s) */}
-              <View style={styles.lastEmotion}>
-                <Text style={styles.lastEmotionHeader}>Selections:</Text>
-                <Text style={styles.lastEmotionText}>{(this.state.primary || "") + "    " +(this.state.secondary || "")}</Text>
-              </View>
-              <View style={styles.tutorial}>
-                <Text style={styles.tutorialText}>The 4-7-8 breathing technique, also known as "relaxing breath," involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</Text> 
-                <Text>{'\n'}After, assess your feelings. We know emotions are complicated so respond with how you mostly feel.</Text>
-              </View>
-              {
+            <View style={styles.back}>
 
-                // this map function determines if the array contains a primary secondary or tertiary emotion in the array and renders accordingly
-                this.state.moods.map((item, index) => {
-                  let button;
-                  if (this.state.moods[0].tertiary_emotion) {
-                    button = <FeelingButton onPress={(e) => this.finalEmotionHandle(item.tertiary_emotion, item.id)} def={item.tertiary_emotion_def || item.secondary_emotion_def} key={item.tertiary_emotion} emotion={item.tertiary_emotion}></FeelingButton>
-                  } else if (this.state.moods[0].secondary_emotion) {
-                    button = <FeelingButton onPress={(e) => this.handlePress(e, this.state.primary, item.secondary_emotion)} def={item.secondary_emotion_def} key={item.secondary_emotion} emotion={item.secondary_emotion}></FeelingButton>
-                  } else {
-                    button = <FeelingButton onPress={(e) => this.handlePress(e, item)} def={null} key={item} emotion={item}></FeelingButton>
-                  }
-                  return button
-                })
-              }
+              <Header />
+              <FeelingButton onPress={() => { this.getMantraUpdateState(this.state.emotions_id) }} emotion={'Get new mantra'}></FeelingButton>
+              <Mantra def={info.def} mantra={info.mantra} advice={info.advice}></Mantra>
               <FeelingButton onPress={(e) => this.resetAll(e)} emotion={'Start Over'}></FeelingButton>
             </View>
           </ScrollView>
